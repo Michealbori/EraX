@@ -1,0 +1,199 @@
+/* =========================================================
+   ERAX PREMIUM INSTITUTIONAL WALLET SUB-SYSTEM LAYOUTS
+   ========================================================= */
+
+.wallet-hero-grid {
+  grid-template-columns: 1fr !important;
+}
+
+.wallet-main-card {
+  background: linear-gradient(135deg, #0e1a2d 0%, #060c14 100%) !important;
+  border-color: rgba(243, 186, 47, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.wallet-main-card::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(243, 186, 47, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wallet-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.secure-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #4ade80;
+  background-color: rgba(74, 222, 128, 0.05);
+  padding: 4px 10px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.wallet-balance-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.wallet-balance-hero h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -1px;
+}
+
+.currency-tag {
+  font-size: 13px;
+  color: var(--gold-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.btn-add-wallet {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-add-wallet:hover {
+  background-color: rgba(243, 186, 47, 0.05) !important;
+  border-color: var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+}
+
+.currency-symbol-txt {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.wallet-fiat-subtitle {
+  color: var(--gold-primary) !important;
+}
+
+/* QUICK ACTION NAVIGATION BUTTON SETS */
+.wallet-action-card {
+  padding-bottom: 28px !important;
+}
+
+.wallet-action-row-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+}
+
+.wallet-action-btn {
+  height: 44px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.wallet-action-btn:hover {
+  border-color: var(--gold-primary);
+  color: var(--gold-primary);
+  background-color: rgba(243, 186, 47, 0.02);
+}
+
+/* ADRESSING ELEMENT ARCHITECTURE */
+.wallet-address-card {
+  gap: 12px !important;
+}
+
+.address-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.address-card-header h5 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.network-pill {
+  font-size: 10px;
+  font-weight: 700;
+  background-color: #121f33;
+  color: var(--text-primary);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.address-copy-box {
+  background-color: var(--bg-input);
+  border: 1px dashed var(--border-color);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.address-copy-box:hover {
+  border-color: var(--gold-primary);
+}
+
+.address-copy-box code {
+  font-family: monospace;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* TRANSACTION LOG SPECIFIC OVERRIDES */
+.full-width-ledger {
+  width: 100%;
+}
+
+.tx-credit-tint { background-color: rgba(74, 222, 128, 0.04); border: 1px solid rgba(74, 222, 128, 0.12); color: #4ade80; }
+.tx-debit-tint { background-color: rgba(255, 77, 77, 0.04); border: 1px solid rgba(255, 77, 77, 0.12); color: var(--red-primary); }
+
+.tx-status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #4ade80 !important;
+}
+
+.text-green { color: #4ade80 !important; }
+.text-white { color: var(--text-primary) !important; }
+
+/* MOBILE BREAKPOINT CORRECTION FOR ACCOUNTING MANAGEMENT MODULES */
+@media (max-width: 768px) {
+  .wallet-action-row-buttons {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .wallet-balance-hero h2 {
+    font-size: 28px;
+  }
+}

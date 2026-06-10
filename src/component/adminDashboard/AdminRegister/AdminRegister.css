@@ -1,0 +1,613 @@
+/* adminRegister.css */
+.admin-register-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #020614;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Atmospheric Nodes */
+.admin-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(140px);
+  z-index: 1;
+}
+.node-amber {
+  top: -10%;
+  right: -5%;
+  width: 500px;
+  height: 500px;
+  background: rgba(243, 186, 47, 0.04);
+}
+.node-slate {
+  bottom: -10%;
+  left: -5%;
+  width: 450px;
+  height: 450px;
+  background: rgba(37, 99, 235, 0.03);
+}
+
+/* ===== CONTAINER MAIN CARD STRUCTURE ===== */
+.admin-register-card {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: 580px;
+  background: linear-gradient(180deg, rgba(11, 15, 30, 0.85) 0%, rgba(5, 9, 20, 0.98) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 44px;
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+}
+
+.admin-accent-strip {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  right: 30%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f3ba2f, transparent);
+}
+
+/* ===== CARD HEADER DESIGN ===== */
+.admin-card-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(243, 186, 47, 0.06);
+  border: 1px solid rgba(243, 186, 47, 0.18);
+  padding: 5px 12px;
+  border-radius: 100px;
+  color: #f3ba2f;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+}
+
+.admin-card-header h2 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.admin-card-header p {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+/* ===== ERROR ALERT MECHANIC ===== */
+.admin-error-banner {
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #f87171;
+  font-size: 0.82rem;
+}
+
+/* ===== FORM & INPUT CONTROL GROUPS ===== */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.admin-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-input-group label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.input-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.25);
+  transition: color 0.25s ease;
+}
+
+.input-field-wrapper input {
+  width: 100%;
+  height: 48px;
+  background: rgba(4, 8, 19, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 0 16px 0 44px;
+  color: #ffffff;
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.input-field-wrapper input:focus {
+  border-color: #f3ba2f;
+  background: rgba(4, 8, 19, 0.9);
+  box-shadow: 0 0 15px rgba(243, 186, 47, 0.08);
+}
+
+.input-field-wrapper input:focus + .field-icon {
+  color: #f3ba2f;
+}
+
+/* Two-Column Layout Segment */
+.password-split-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ===== PASSWORD COMPLEXITY GRID MEASURES ===== */
+.pass-diagnostic-matrix {
+  display: flex;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+
+.pass-diagnostic-matrix .metric {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.pass-diagnostic-matrix .metric svg {
+  opacity: 0.3;
+  transition: opacity 0.25s ease;
+}
+
+.pass-diagnostic-matrix .metric.passed {
+  color: #f3ba2f;
+}
+
+.pass-diagnostic-matrix .metric.passed svg {
+  opacity: 1;
+  fill: rgba(243, 186, 47, 0.1);
+}
+
+/* ===== SECURITY CALL TO ACTION ACTION GATES ===== */
+.admin-submit-btn {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffd15c 0%, #f59e0b 100__);
+  color: #0b0d19;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.2);
+}
+
+.admin-submit-btn .arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+.admin-submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245, 158, 11, 0.3);
+}
+
+.admin-submit-btn:hover .arrow-icon {
+  transform: translateX(3px);
+}
+
+/* ===== SYSTEM FOOTER NAV MATRIX ===== */
+.admin-card-footer {
+  margin-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.admin-card-footer p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.admin-card-footer a {
+  color: #f3ba2f;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  margin-left: 4px;
+}
+
+.admin-card-footer a:hover {
+  color: #ffe08a;
+  text-decoration: underline;
+}
+
+/* ===== SYSTEM RESPONSIVE DEPLOYMENTS ===== */
+@media screen and (max-width: 640px) {
+  .admin-register-card {
+    padding: 28px 20px;
+  }
+  
+  .password-split-row {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  
+  .pass-diagnostic-matrix {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-submit-btn, .input-field-wrapper input, .admin-submit-btn .arrow-icon {
+    transition: none !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* AdminRegister.css - Clean, Secure, Responsive */
+
+.admin-register-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #05070b;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Glow Effects */
+.admin-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.admin-glow.node-amber {
+  background: #f3ba2f;
+  top: -200px;
+  right: -200px;
+}
+
+.admin-glow.node-slate {
+  background: #3b82f6;
+  bottom: -200px;
+  left: -200px;
+}
+
+/* Main Card */
+.admin-register-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  background: #0d131c;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+.admin-accent-strip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f3ba2f, #3b82f6);
+  border-radius: 16px 16px 0 0;
+}
+
+/* Header */
+.admin-card-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: rgba(243, 186, 47, 0.1);
+  border: 1px solid rgba(243, 186, 47, 0.2);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #f3ba2f;
+  margin-bottom: 16px;
+}
+
+.admin-card-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 8px;
+}
+
+.admin-card-header p {
+  font-size: 13px;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Error & Success Banners */
+.admin-error-banner,
+.admin-success-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.admin-error-banner {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.admin-success-banner {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #4ade80;
+}
+
+.error-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+.error-close:hover {
+  opacity: 0.8;
+}
+
+/* Form */
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.admin-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-input-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.input-field-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  color: #64748b;
+  pointer-events: none;
+}
+
+.admin-input-group input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  background: #070d16;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.admin-input-group input:focus {
+  border-color: #f3ba2f;
+  box-shadow: 0 0 0 3px rgba(243, 186, 47, 0.1);
+}
+
+.admin-input-group input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-input-group input::placeholder {
+  color: #475569;
+}
+
+.input-hint {
+  font-size: 11px;
+  color: #64748b;
+  margin: 4px 0 0 0;
+}
+
+/* Password Split Row */
+.password-split-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* Password Requirements */
+.pass-diagnostic-matrix {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  padding: 12px;
+  background: #070d16;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+}
+
+.pass-diagnostic-matrix .metric {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.pass-diagnostic-matrix .metric.passed {
+  color: #4ade80;
+}
+
+.pass-diagnostic-matrix .metric svg {
+  flex-shrink: 0;
+}
+
+/* Submit Button */
+.admin-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #f3ba2f, #d99e2b);
+  border: none;
+  border-radius: 10px;
+  color: #050a12;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 8px;
+}
+
+.admin-submit-btn:hover:not(:disabled) {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.admin-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-submit-btn .spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.arrow-icon {
+  transition: transform 0.2s;
+}
+
+.admin-submit-btn:hover:not(:disabled) .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Footer */
+.admin-card-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.admin-card-footer a {
+  color: #f3ba2f;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.admin-card-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .admin-register-card {
+    padding: 24px 20px;
+  }
+  
+  .password-split-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .pass-diagnostic-matrix {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,346 @@
+/* MarketTelemetry.css */
+.telemetry-system-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+/* ===== TELEMETRY WINDOW HEADER PANEL ===== */
+.telemetry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 24px;
+}
+
+.telemetry-header-meta h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.telemetry-header-meta p {
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.telemetry-action-cluster {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.live-feed-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.live-feed-banner.streaming svg {
+  animation: telemetryPulseSignal 1.8s infinite ease-in-out;
+}
+
+.telemetry-refresh-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #94a3b8;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.telemetry-refresh-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.pulse-spinning {
+  animation: telemetrySpinCycle 4s linear infinite;
+}
+
+/* ===== TELEMETRY DATA TICKER CHIPS ===== */
+.telemetry-ticker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.ticker-telemetry-card {
+  background: linear-gradient(180deg, rgba(11, 17, 35, 0.5) 0%, rgba(6, 10, 23, 0.8) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.ticker-telemetry-card:hover {
+  border-color: rgba(251, 191, 36, 0.15);
+  transform: translateY(-2px);
+}
+
+.ticker-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ticker-asset-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.ticker-trend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.ticker-trend-pill.up { background: rgba(16, 185, 129, 0.08); color: #10b981; }
+.ticker-trend-pill.down { background: rgba(239, 68, 68, 0.08); color: #ef4444; }
+
+.ticker-value-row h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  font-family: monospace;
+}
+
+.ticker-bottom-stats {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.sub-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sub-lbl {
+  font-size: 0.65rem;
+  color: #475569;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.sub-val {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  font-family: monospace;
+}
+
+/* ===== TECHNICAL SPLIT BOX MONITOR ===== */
+.telemetry-split-layout {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+}
+
+.order-depth-block, .relay-nodes-block {
+  background: linear-gradient(180deg, rgba(10, 16, 32, 0.4) 0%, rgba(5, 9, 20, 0.7) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.block-header-flat h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.block-header-flat p {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.text-muted-icon {
+  color: #475569;
+}
+
+/* Order Book Filling Bars Layout rules */
+.depth-bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.depth-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.depth-group-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #475569;
+  letter-spacing: 0.5px;
+}
+
+.depth-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.depth-price {
+  font-family: monospace;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: 80px;
+}
+.sell-txt { color: #f87171; }
+.buy-txt { color: #34d399; }
+
+.depth-bar-wrapper {
+  flex: 1;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.01);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.depth-fill-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ask-fill { background: linear-gradient(90deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.02) 100__); }
+.bid-fill { background: linear-gradient(90deg, rgba(16, 185, 129, 0.2) 0%, rgba(16, 185, 129, 0.02) 100__); }
+
+.depth-vol {
+  font-family: monospace;
+  font-size: 0.82rem;
+  color: #94a3b8;
+  text-align: right;
+  width: 70px;
+}
+
+/* Relay Link Node Clusters UI rules */
+.relay-nodes-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.relay-node-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+}
+
+.node-identity-core {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pulse-indicator-active {
+  width: 6px;
+  height: 6px;
+  background-color: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.node-name-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.node-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.node-efficiency-label {
+  font-size: 0.7rem;
+  color: #475569;
+  margin-top: 1px;
+}
+
+.node-performance-metrics {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.latency-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.04);
+  border: 1px solid rgba(251, 191, 36, 0.1);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.status-string-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #10b981;
+  letter-spacing: 0.3px;
+}
+
+/* ===== KEYFRAME ANIMATIONS GRAPHICS ===== */
+@keyframes telemetrySpinCycle {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes telemetryPulseSignal {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ===== MONITOR SYSTEM RESPONSIVENESS ===== */
+@media screen and (max-width: 1100px) {
+  .telemetry-split-layout {
+    grid-template-columns: 1fr;
+  }
+}

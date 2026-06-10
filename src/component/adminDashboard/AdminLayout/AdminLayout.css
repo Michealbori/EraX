@@ -1,0 +1,22 @@
+/* AdminLayout.css */
+.admin-master-layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background-color: #030712; /* Core platform background color */
+}
+
+.admin-viewport-content-container {
+  flex: 1;
+  margin-left: 260px; /* Matches the exact width of your AdminSidebar */
+  padding: 40px;
+  min-height: 100vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Smooth structural handling for smaller administrative viewports */
+@media screen and (max-width: 1024px) {
+  .admin-viewport-content-container {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,411 @@
+/* AssetVault.css */
+.vault-system-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+}
+
+/* ===== ADMINISTRATIVE MODULE HEADER ===== */
+.vault-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 24px;
+}
+
+.vault-header-meta h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.vault-header-meta p {
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.vault-sync-btn {
+  background: rgba(251, 191, 36, 0.03);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vault-sync-btn:hover:not(:disabled) {
+  background: #fbbf24;
+  color: #030712;
+  border-color: #fbbf24;
+  box-shadow: 0 0 14px rgba(251, 191, 36, 0.2);
+}
+
+.vault-sync-btn.processing svg {
+  animation: vaultSpinCycle 1.5s linear infinite;
+}
+
+/* ===== GLOBAL RECOVERY STRIP ACROSS PLATFORMS ===== */
+.vault-aggregate-strip {
+  background: linear-gradient(90deg, rgba(11, 17, 35, 0.6) 0%, rgba(6, 10, 23, 0.9) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.node-label {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.node-main-val {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.node-main-val h2 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.8px;
+}
+
+.reserve-health-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.aggregate-split-stats {
+  display: flex;
+  gap: 16px;
+}
+
+.stat-pill {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 12px 18px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pill-lbl {
+  font-size: 0.7rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.pill-val {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  font-family: monospace;
+}
+
+/* ===== LIQUIDITY LEDGER TABLE MATRIX DATA ===== */
+.vault-matrix-block {
+  background: linear-gradient(180deg, rgba(10, 16, 32, 0.4) 0%, rgba(5, 9, 20, 0.7) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.block-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.block-title-row h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.matrix-counter {
+  font-size: 0.75rem;
+  color: #64748b;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+.vault-responsive-table {
+  overflow-x: auto;
+}
+
+.vault-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.vault-data-table th {
+  padding: 14px 16px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: #475569;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  letter-spacing: 0.5px;
+}
+
+.vault-data-table td {
+  padding: 18px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  font-size: 0.88rem;
+}
+
+.vault-data-row-item:hover {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.asset-profile-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.asset-ticker-badge {
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.asset-net-string {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.monospace-data-field {
+  font-family: monospace;
+  font-weight: 500;
+}
+
+.monospace-data-field.text-highlight {
+  color: #ffffff;
+}
+
+.monospace-data-field.fiat-green {
+  color: #10b981;
+}
+
+.text-muted {
+  color: #475569 !important;
+}
+
+.address-hash-cell code {
+  color: #94a3b8;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.integrity-tag-secure {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.08);
+  color: #10b981;
+  padding: 2px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ===== BOTTOM TWO-COLUMN PANEL SPLITS ===== */
+.vault-bottom-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.vault-action-control-panel, .vault-queue-panel {
+  background: linear-gradient(180deg, rgba(10, 16, 32, 0.4) 0%, rgba(5, 9, 20, 0.7) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.panel-header-flat h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.panel-header-flat p {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* Rebalancing Action button configs */
+.action-button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vault-prime-action-btn {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 16px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-txt-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.btn-desc {
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-top: 1px;
+}
+
+.vault-prime-action-btn.sweep-action:hover {
+  border-color: rgba(251, 191, 36, 0.25);
+  background: rgba(251, 191, 36, 0.02);
+}
+.vault-prime-action-btn.sweep-action svg { color: #fbbf24; }
+
+.vault-prime-action-btn.provision-action:hover {
+  border-color: rgba(59, 130, 246, 0.25);
+  background: rgba(59, 130, 246, 0.02);
+}
+.vault-prime-action-btn.provision-action svg { color: #3b82f6; }
+
+/* Settlement queue row tracking outputs */
+.queue-list-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.queue-row-card {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.queue-id-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.q-id-tag {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.q-amt-string {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: monospace;
+}
+
+.queue-meta-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.q-status-bubble {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.05);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.q-risk-factor {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.q-risk-factor.low { color: #10b981; }
+.q-risk-factor.elevated { color: #ef4444; }
+
+/* ===== KEYFRAME LOAD SYSTEMS ===== */
+@keyframes vaultSpinCycle {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== SYSTEM LAYOUT RESPONSIVENESS ===== */
+@media screen and (max-width: 1280px) {
+  .vault-aggregate-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .aggregate-split-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .vault-bottom-split-grid {
+    grid-template-columns: 1fr;
+  }
+}

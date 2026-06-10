@@ -1,0 +1,127 @@
+.newMe 
+{
+    margin-bottom: 30px;
+}
+
+
+/* ==========================================================================
+   SIDEBAR MAIN CONTAINER FIXED SCROLL ENGINE
+   ========================================================================== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;           /* Forces sidebar to match exact viewport window height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;        /* Prevents the outer container from scrolling */
+  box-sizing: border-box;
+  
+  /* Keep your existing properties below untouched */
+  width: 260px;            
+  background-color: #0b0e14; 
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+/* ===== LOGO HEADER AREA (Fixed) ===== */
+.logo-container {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;          /* Prevents the header from squishing */
+}
+
+/* ==========================================================================
+   ISOLATED SCROLLABLE NAVIGATION REGION
+   ========================================================================== */
+.nav-menu {
+  flex: 1;                 /* Takes up all available space between logo and security card */
+  overflow-y: auto;        /* Activates perfect independent vertical scroll */
+  overflow-x: hidden;      /* Lock horizontal layout shifts */
+  padding: 0.5rem 1rem;
+  scroll-behavior: smooth;
+}
+
+/* ===== SECURITY CARD AREA (Fixed Above Footer) ===== */
+.security-card {
+  margin: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  flex-shrink: 0;          /* Keeps card size locked */
+}
+
+/* ==========================================================================
+   SIDEBAR FOOTER AREA (Pinned & Safe)
+   ========================================================================== */
+.sidebar-footer {
+  margin-top: auto;        /* Pushes footer firmly to the base boundary */
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: #0b0e14; /* Keeps backdrop solid over scrolling links */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;          /* Absolute guard constraint against screen cutoff */
+}
+
+.footer-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.footer-user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;        /* Clean truncation safety boundary */
+}
+
+.footer-username {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer-email {
+  color: #848e9c;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.footer-arrow {
+  margin-left: auto;
+  color: #848e9c;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   PREMIUM MINIMALIST CUSTOM SCROLLBAR
+   ========================================================================== */
+.nav-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.nav-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.nav-menu::-webkit-scrollbar-thumb {
+  background: rgba(243, 186, 47, 0.15);
+  border-radius: 10px;
+}
+
+.nav-menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(243, 186, 47, 0.4);
+}

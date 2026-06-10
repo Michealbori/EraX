@@ -1,0 +1,341 @@
+/* EcosystemFineTuning.css */
+.tuning-system-workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  width: 100%;
+  padding-bottom: 100px; /* Space for the sticky execution bar */
+}
+
+/* ===== ADMINISTRATIVE WINDOW HEADER ===== */
+.tuning-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 24px;
+}
+
+.tuning-header-meta h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.tuning-header-meta p {
+  font-size: 0.88rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* ===== CONFIGURATION LAYOUT GRID ===== */
+.tuning-configuration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.tuning-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.tuning-card-block {
+  background: linear-gradient(180deg, rgba(10, 16, 32, 0.4) 0%, rgba(5, 9, 20, 0.7) 100__);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.block-header-flat {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 16px;
+  margin-bottom: 20px;
+}
+
+.block-header-flat svg {
+  margin-top: 2px;
+}
+.text-gold { color: #fbbf24; }
+.text-blue { color: #3b82f6; }
+.text-red { color: #ef4444; }
+
+.header-meta-group h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.header-meta-group p {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+/* ===== INPUT FORM STYLING PARAMS ===== */
+.tuning-fields-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-field-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.input-addon-wrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(4, 7, 16, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.input-addon-wrapper:focus-within {
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.input-prefix-tag, .input-addon-tag {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 0 14px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #475569;
+  user-select: none;
+}
+
+.input-addon-wrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  height: 44px;
+  padding: 0 14px;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+/* Strip native inner arrow numbers appearance inputs */
+.input-addon-wrapper input::-webkit-outer-spin-button,
+.input-addon-wrapper input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.field-explanatory-remark {
+  font-size: 0.72rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* ===== EMERGENCY INTERCEPT PERIMETER BLOCK ===== */
+.emergency-card-perimeter {
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.02) 0%, rgba(5, 9, 20, 0.7) 100__);
+}
+
+.emergency-flex-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.emergency-text-node {
+  max-width: 70%;
+}
+
+.emergency-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.emergency-title-row h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ef4444;
+}
+
+.emergency-text-node p {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Cyber Toggle Action Switch Layout mapping */
+.toggle-switch-housing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.cyber-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 52px;
+  height: 28px;
+}
+
+.cyber-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider-track {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #1e293b;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.toggle-slider-track:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #64748b;
+  transition: .3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+}
+
+.cyber-toggle-switch input:checked + .toggle-slider-track {
+  background-color: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.cyber-toggle-switch input:checked + .toggle-slider-track:before {
+  transform: translateX(24px);
+  background-color: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+.toggle-status-descriptor {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.state-nominal { color: #10b981; }
+.state-critical { color: #ef4444; }
+
+/* ===== STICKY ACTIONS BAR MATRIX FOOTER ===== */
+.tuning-sticky-action-bar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 260px; /* Pushes out directly past standard admin layout sidebar frame */
+  background: linear-gradient(180deg, rgba(4, 7, 16, 0.85) 0%, #030712 100__);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 90;
+}
+
+.success-broadcast-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  animation: telemetryPulseSignal 2s ease-in-out;
+}
+
+.tuning-commit-btn {
+  background: #fbbf24;
+  border: 1px solid #fbbf24;
+  color: #030712;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  margin-left: auto; /* Ensures btn anchors right if notification block is empty */
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tuning-commit-btn:hover:not(:disabled) {
+  background: #f59e0b;
+  border-color: #f59e0b;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.25);
+}
+
+.tuning-commit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.spin-loader {
+  animation: spinParamEngine 1.2s linear infinite;
+}
+
+/* ===== ANIMATIONS KEYFRAMES GRAPHICS ===== */
+@keyframes spinParamEngine {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes telemetryPulseSignal {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* ===== MONITOR SYSTEM LAYOUT RESPONSIVENESS ===== */
+@media screen and (max-width: 1024px) {
+  .tuning-split-grid {
+    grid-template-columns: 1fr;
+  }
+  .tuning-sticky-action-bar {
+    left: 0;
+    padding: 16px 24px;
+  }
+  .emergency-flex-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .emergency-text-node {
+    max-width: 100%;
+  }
+  .toggle-switch-housing {
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}

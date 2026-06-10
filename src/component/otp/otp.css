@@ -1,0 +1,428 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #020714;
+  color: #ffffff;
+}
+
+/* =========================================================
+   CANVAS CORE & MESH WRAPPERS
+   ========================================================= */
+.otp-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  background: 
+    radial-gradient(circle at 50% 0%, rgba(251, 191, 36, 0.05), transparent 50%),
+    #020714;
+}
+
+.otp-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(251, 191, 36, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.ambient-blur {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.04), transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 1;
+}
+.glow-left { top: -100px; left: -100px; }
+.glow-right { bottom: -150px; right: -100px; }
+
+/* =========================================================
+   HIGH-GLASS OBSIDIAN ACCESS CONTAINER
+   ========================================================= */
+.otp-card {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  background: linear-gradient(180deg, rgba(10, 18, 36, 0.94), rgba(4, 9, 20, 0.98));
+  border: 1px solid rgba(251, 191, 36, 0.16);
+  border-radius: 24px;
+  padding: 44px 40px;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.6), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  z-index: 5;
+}
+
+.top-glow-accent {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  box-shadow: 0 0 15px #fbbf24;
+}
+
+/* =========================================================
+   SYSTEM METRICS BRAND SECTION
+   ========================================================= */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.logo h1 {
+  font-size: 1.65rem;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+}
+
+.logo h1 span {
+  color: #fbbf24;
+  font-weight: 800;
+}
+
+.logo-icon {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+
+.bar {
+  width: 4px;
+  background: linear-gradient(180deg, #ffe082, #fbbf24);
+  border-radius: 2px 2px 0 0;
+}
+
+.bar1 { height: 8px; }
+.bar2 { height: 14px; }
+.bar3 { height: 20px; }
+
+.accent-node {
+  position: absolute;
+  top: -5px;
+  right: -6px;
+  color: #fbbf24;
+}
+
+/* =========================================================
+   FLUID INFORMATION GRAPHICS
+   ========================================================= */
+.content {
+  text-align: center;
+}
+
+.otp-badge {
+  width: fit-content;
+  margin: 0 auto 16px auto;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: rgba(251, 191, 36, 0.05);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  color: #fbbf24;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.content h2 {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+}
+
+.content .subtext {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.5;
+  margin-top: 10px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.email-highlight {
+  display: block;
+  color: #fbbf24;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* =========================================================
+   DYNAMIC INPUT NODES MATRIX (6-GRID FRAME)
+   ========================================================= */
+.otp-wrapper {
+  margin: 32px 0 20px 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.otp-input {
+  width: 100%;
+  aspect-ratio: 1 / 1.12;
+  background: #040a1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(1.4rem, 4vw, 1.85rem);
+  font-weight: 700;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 -4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.otp-input:focus {
+  border-color: #fbbf24;
+  background: #06112c;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 20px rgba(251, 191, 36, 0.1),
+    inset 0 -4px 10px rgba(251, 191, 36, 0.04);
+}
+
+/* Error Modifiers */
+.has-input-errors .otp-input {
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.error-text {
+  color: #ef4444;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+  animation: dynamicShake 0.4s ease-in-out both;
+}
+
+/* =========================================================
+   NOTICES AND INTERACTIVE CORE TRIGGERS
+   ========================================================= */
+.security-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: 420px;
+  margin: 0 auto 24px auto;
+}
+
+.icon-badge {
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  opacity: 0.85;
+}
+
+.security-notice p {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
+  text-align: left;
+}
+
+/* Shimmer Premium Interactive Command Button */
+.interactive-shimmer {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(180deg, #fcd34d 0%, #fbbf24 100__);
+  color: #030712;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.15);
+  overflow: hidden;
+}
+
+.interactive-shimmer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-25deg);
+  animation: shineLoop 4.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.arrow-icon {
+  transition: transform 0.2s ease;
+}
+
+.interactive-shimmer:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(251, 191, 36, 0.28);
+}
+
+.interactive-shimmer:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   FOOTER INFRASTRUCTURE MATRIX
+   ========================================================= */
+.footer {
+  margin-top: 32px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin-bottom: 24px;
+}
+
+.resend-action-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.resend-action-block p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.resend-trigger {
+  background: transparent;
+  border: none;
+  color: #fbbf24;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: opacity 0.2s ease;
+}
+
+.resend-trigger:hover:not(:disabled) {
+  text-decoration: underline;
+  color: #fcd34d;
+}
+
+.resend-trigger.lockout {
+  color: rgba(255, 255, 255, 0.25);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+.spinning-sync {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.spinning-sync svg {
+  animation: rotateSpinner 1s linear infinite;
+}
+
+/* Bottom Identity Locks */
+.bottom-security {
+  margin-top: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-weight: 500;
+}
+
+.secure-badge svg {
+  color: #fbbf24;
+  opacity: 0.7;
+}
+
+.status-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(251, 191, 36, 0.3);
+}
+
+/* =========================================================
+   KEYFRAME DISPATCH MECHANISMS
+   ========================================================= */
+@keyframes shineLoop {
+  0% { left: -150%; }
+  25%, 100% { left: 150%; }
+}
+
+@keyframes rotateSpinner {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes dynamicShake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-3px, 0, 0); }
+  40%, 60% { transform: translate3d(3px, 0, 0); }
+}
+
+/* =========================================================
+   MEDIA QUERY VIEWPORT REFINEMENT
+   ========================================================= */
+@media (max-width: 480px) {
+  .otp-card {
+    padding: 36px 20px;
+    border-radius: 20px;
+  }
+  .otp-wrapper {
+    gap: 8px;
+  }
+  .otp-input {
+    border-radius: 10px;
+  }
+  .bottom-security {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .status-dot {
+    display: none;
+  }
+}
+
+
+
+

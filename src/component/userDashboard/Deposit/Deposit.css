@@ -1,0 +1,658 @@
+/* =========================================================
+   ERAX DEPOSIT SETTLEMENT NODE STYLING ARCHITECTURE
+   ========================================================= */
+
+.deposit-hero-card {
+  background: linear-gradient(135deg, #091c13 0%, #060c14 100%) !important;
+  border-color: rgba(74, 222, 128, 0.15) !important;
+}
+
+.custom-deposit-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px !important;
+  margin-bottom: 24px;
+}
+
+.deposit-network-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: 100%;
+}
+
+.network-select-btn {
+  height: 46px;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.network-select-btn:hover {
+  border-color: rgba(243, 186, 47, 0.3);
+  color: var(--text-primary);
+}
+
+.network-select-btn.active-net-btn {
+  border-color: var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+  background-color: rgba(243, 186, 47, 0.04);
+  box-shadow: 0 0 12px rgba(243, 186, 47, 0.05);
+}
+
+/* ADDRESS GENERATION DRAW VISUAL LAYOUT CONTAINER */
+.address-generation-display-box {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.qr-placeholder-wrapper {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.qr-matrix-box {
+  position: relative;
+  background-color: #ffffff;
+  color: #050a12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-matrix-box svg {
+  color: #050a12 !important;
+}
+
+.qr-center-logo {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background-color: #050a12;
+  color: var(--gold-primary);
+  font-weight: 800;
+  font-size: 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffffff;
+}
+
+.generated-address-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.address-field-header {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.address-copy-interactive-row {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.address-copy-interactive-row:hover {
+  border-color: rgba(243, 186, 47, 0.4);
+}
+
+.truncate-address {
+  font-family: monospace;
+  font-size: 14px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: all;
+}
+
+.address-copy-action-icon {
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.copy-success-floating-txt {
+  font-size: 12px;
+  color: #4ade80;
+  font-weight: 500;
+  animation: fadeInTxt 0.2s ease;
+}
+
+@keyframes fadeInTxt {
+  from { opacity: 0; transform: translateY(2px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* INFO CALLOUT STYLING */
+.deposit-notice-callout-card {
+  background-color: rgba(243, 186, 47, 0.02);
+  border: 1px solid rgba(243, 186, 47, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.deposit-notice-callout-card p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* TRACKING LEDGER SUB-STACKS */
+.live-inbound-syncing-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.inbound-sync-row {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sync-row-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sync-amt {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sync-net-tag {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.sync-row-status-metrics {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.sync-status-txt {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sync-time-stamp {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* DEPOSIT ELEMENT RESPONSIVE OVERRIDES Matrix */
+@media (max-width: 768px) {
+  .address-generation-display-box {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+  }
+  .deposit-network-selector-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+
+
+/* =========================================
+   PROCEED BUTTON
+========================================= */
+
+.deposit-proceed-btn {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(
+    135deg,
+    #f3ba2f,
+    #d89f12
+  );
+  color: #050a12;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 22px;
+  transition: all 0.2s ease;
+}
+
+.deposit-proceed-btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+}
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.deposit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+/* =========================================
+   MODAL
+========================================= */
+
+.deposit-modal {
+  width: 100%;
+  max-width: 460px;
+  background: #0d131c;
+  border: 1px solid rgba(243, 186, 47, 0.15);
+  border-radius: 18px;
+  padding: 28px;
+  position: relative;
+  animation: modalFade 0.25s ease;
+}
+
+.deposit-modal h3 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.deposit-modal p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* =========================================
+   CLOSE BUTTON
+========================================= */
+
+.overlay-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================================
+   CONFIRM BUTTON
+========================================= */
+
+.payment-confirm-btn {
+  width: 100%;
+  height: 48px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 24px;
+  background: linear-gradient(
+    135deg,
+    #f3ba2f,
+    #d89f12
+  );
+  color: #050a12;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* =========================================
+   SUCCESS BOX
+========================================= */
+
+.payment-success-box {
+  text-align: center;
+  padding-top: 10px;
+}
+
+.success-icon {
+  color: #4ade80;
+  margin-bottom: 14px;
+}
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+/* =========================================================
+   DEPOSIT AMOUNT INPUT & COUNTDOWN STYLES
+   ========================================================= */
+
+.deposit-amount-input-group {
+  margin: 20px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deposit-amount-input {
+  width: 100%;
+  padding: 12px 16px;
+  background: #070d16;
+  border: 1px solid #162235;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  transition: border-color 0.2s ease;
+}
+
+.deposit-amount-input:focus {
+  outline: none;
+  border-color: #f3ba2f;
+  box-shadow: 0 0 0 3px rgba(243, 186, 47, 0.1);
+}
+
+.deposit-amount-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.amount-error-text {
+  color: #ff4d4d;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Countdown Timer */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(243, 186, 47, 0.08);
+  border: 1px solid rgba(243, 186, 47, 0.15);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.countdown-timer {
+  color: #f3ba2f;
+  font-weight: 700;
+  font-family: monospace;
+  margin-left: auto;
+  font-size: 16px;
+}
+
+/* TxHash Input */
+.deposit-tx-input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.deposit-tx-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: #070d16;
+  border: 1px solid #162235;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-family: monospace;
+  transition: border-color 0.2s ease;
+}
+
+.deposit-tx-input:focus {
+  outline: none;
+  border-color: #f3ba2f;
+}
+
+.deposit-tx-input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success Redirect Text */
+.redirect-text {
+  color: #4ade80;
+  font-weight: 500;
+  margin-top: 12px;
+  font-size: 14px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Disabled Button State */
+.payment-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Modal Header Spacing */
+.deposit-modal h3 {
+  margin-bottom: 24px !important;
+}
+
+
+
+/* =========================================================
+   SCREENSHOT UPLOAD STYLES
+   ========================================================= */
+
+.screenshot-upload-group {
+  margin: 20px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.screenshot-upload-box {
+  background: #070d16;
+  border: 2px dashed #162235;
+  border-radius: 8px;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.screenshot-upload-box:hover {
+  border-color: #f3ba2f;
+  background: rgba(243, 186, 47, 0.02);
+}
+
+.screenshot-upload-box .text-gold {
+  margin-bottom: 4px;
+}
+
+.upload-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Screenshot Preview */
+.screenshot-preview-box {
+  position: relative;
+  border: 1px solid #162235;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #070d16;
+}
+
+.screenshot-preview-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.screenshot-remove-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 77, 77, 0.9);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.2s;
+}
+
+.screenshot-remove-btn:hover {
+  background: #ff4d4d;
+}
+
+.screenshot-remove-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Hidden file input */
+.hidden-file-input {
+  display: none;
+}
+
+/* Error text reuse */
+.amount-error-text {
+  color: #ff4d4d;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Countdown & other styles remain the same... */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(243, 186, 47, 0.08);
+  border: 1px solid rgba(243, 186, 47, 0.15);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.countdown-timer {
+  color: #f3ba2f;
+  font-weight: 700;
+  font-family: monospace;
+  margin-left: auto;
+  font-size: 16px;
+}
+
+.redirect-text {
+  color: #4ade80;
+  font-weight: 500;
+  margin-top: 12px;
+  font-size: 14px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.payment-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.deposit-modal h3 {
+  margin-bottom: 24px !important;
+}

@@ -1,0 +1,111 @@
+.data-security-section {
+  background-color: #0b0d14; /* Deep navy background */
+  color: #ffffff;
+  padding: 80px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+.security-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.security-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.security-header h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.security-header p {
+  color: #94a3b8;
+  font-size: 16px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Layout Logic */
+.security-layout {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.visual-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.fingerprint-img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  filter: drop-shadow(0 0 30px rgba(243, 186, 47, 0.1));
+}
+
+.info-column {
+  flex: 1.5;
+}
+
+/* Grid & Cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.sec-card {
+  background: rgba(255, 255, 255, 0.02); /* Glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 30px;
+  display: flex;
+  gap: 20px;
+  transition: all 0.3s ease;
+}
+
+.sec-card:hover {
+  border-color: #f3ba2f; /* Gold border glow */
+  background: rgba(243, 186, 47, 0.03);
+  transform: translateX(5px);
+}
+
+.wide-card {
+  width: 100%;
+}
+
+.sec-icon {
+  width: 50px;
+  height: 50px;
+  background: rgba(243, 186, 47, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.sec-content h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.sec-content p {
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .security-layout { flex-direction: column; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .fingerprint-img { max-width: 300px; }
+}
