@@ -45,7 +45,7 @@ const MarketingLayout = () => (
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Routes>
 
         {/* MARKETING SHELL */}

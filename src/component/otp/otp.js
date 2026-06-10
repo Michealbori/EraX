@@ -3,9 +3,12 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ShieldCheck, Lock, ArrowRight, RefreshCw, Layers } from "lucide-react";
 import "./otp.css";
 
+const API_BASE = "http://localhost:5000";
+
 export default function OtpVerification() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [error, setError] = useState("");
+  const [successMsg, setSuccessMsg] = useState("");
   const [countdown, setCountdown] = useState(30);
   const [isResending, setIsResending] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -14,27 +17,40 @@ export default function OtpVerification() {
   const navigate = useNavigate(); 
   const location = useLocation();
 
-  // STABLE EMAIL CAPTURE MATRIX
+  // ✅ EMAIL CAPTURE
   useEffect(() => {
-    // Pipeline Layer 1: Read out of operational local storage parameters
     let registeredEmail = localStorage.getItem("userEmail");
     
-    // Pipeline Layer 2: Location state fallback parameter reading
     if (!registeredEmail && location.state?.email) {
       registeredEmail = location.state.email;
       localStorage.setItem("userEmail", registeredEmail);
     }
 
+    // Also check the user object
+    if (!registeredEmail) {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        try {
+          const parsed = JSON.parse(userData);
+          registeredEmail = parsed.email;
+        } catch (e) {
+          console.error("Failed to parse user data");
+        }
+      }
+    }
+
     if (registeredEmail) {
       setUserEmail(registeredEmail.toLowerCase().trim());
+      console.log("✅ User email set:", registeredEmail);
     } else {
-      setError("Authorization context trace lost. Please return to authentication gateway.");
+      console.error("❌ No email found in localStorage");
+      setError("Session expired. Please register again.");
     }
   }, [location]);
 
-  // Premium aesthetic mask logic for email strings
+  // Format masked email
   const formatMaskedEmail = (email) => {
-    if (!email) return "Loading Profile Terminal...";
+    if (!email) return "Loading...";
     const [name, domain] = email.split("@");
     if (!name || !domain) return email;
     if (name.length <= 3) {
@@ -43,7 +59,7 @@ export default function OtpVerification() {
     return `${name.slice(0, 3)}*******@${domain}`;
   };
 
-  // Resend Lockout Engine
+  // Countdown timer
   useEffect(() => {
     if (countdown <= 0) return;
     const interval = setInterval(() => {
@@ -52,13 +68,13 @@ export default function OtpVerification() {
     return () => clearInterval(interval);
   }, [countdown]);
 
-  // FIXED WATCHER ENGINE: Fires handshake code sequence upon final entry slice
+  // Auto-verify when all 6 digits entered
   useEffect(() => {
     const combinedCode = otp.join("");
     if (combinedCode.length === 6 && !otp.includes("")) {
       const processingDelay = setTimeout(() => {
         handleOtpVerification(combinedCode);
-      }, 100);
+      }, 300);
       return () => clearTimeout(processingDelay);
     }
   }, [otp]);
@@ -70,6 +86,7 @@ export default function OtpVerification() {
     updatedOtp[index] = value;
     setOtp(updatedOtp);
     setError("");
+    setSuccessMsg("");
 
     if (value && index < 5) {
       inputRefs.current[index + 1].focus();
@@ -101,6 +118,7 @@ export default function OtpVerification() {
 
     setOtp(updatedOtp);
     setError("");
+    setSuccessMsg("");
 
     const focusIndex = Math.min(digits.length, 5);
     if (inputRefs.current[focusIndex]) {
@@ -112,15 +130,18 @@ export default function OtpVerification() {
     if (isVerifying) return;
     
     if (!userEmail) {
-      setError("Cannot clear gateway check: Missing destination identity email parameter.");
+      setError("Email not found. Please register again.");
       return;
     }
 
     setIsVerifying(true);
     setError("");
+    setSuccessMsg("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/identity/verify-otp", {
+      console.log("🔐 Verifying OTP for:", userEmail);
+      
+      const response = await fetch(`${API_BASE}/api/identity/verify-otp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -132,20 +153,26 @@ export default function OtpVerification() {
       });
 
       const data = await response.json();
+      console.log("📥 Verification response:", data);
 
       if (!response.ok) {
         throw new Error(data.message || "Verification failed.");
       }
 
-      setError("");
+      setSuccessMsg("Verification successful! Redirecting...");
+      
       if (data.token) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("isAuthenticated", "true");
       }
-      navigate("/dashboard/overview"); 
+      
+      setTimeout(() => {
+        navigate("/dashboard/overview");
+      }, 1000);
 
     } catch (err) {
-      console.error("OTP Handshake Security Fault:", err);
-      setError(err.message || "Failed to establish a verification handshake.");
+      console.error("❌ OTP Verification Error:", err);
+      setError(err.message || "Failed to verify OTP.");
       setOtp(["", "", "", "", "", ""]); 
       if (inputRefs.current[0]) inputRefs.current[0].focus();
     } finally {
@@ -157,24 +184,32 @@ export default function OtpVerification() {
     e.preventDefault();
     const code = otp.join("");
     if (code.length < 6) {
-      setError("Please fill out the absolute 6-digit OTP sent to your Email.");
+      setError("Please enter all 6 digits.");
       return;
     }
     handleOtpVerification(code);
   };
 
+  // ✅ FIXED: Resend OTP Handler
   const handleResend = async () => {
-    if (countdown > 0 || isResending) return;
+    if (countdown > 0 || isResending) {
+      console.log("⏳ Resend locked, countdown:", countdown);
+      return;
+    }
+    
     if (!userEmail) {
-      setError("Cannot request parameter payload: Target address reference point missing.");
+      setError("Email not found. Please register again.");
       return;
     }
 
     setIsResending(true);
     setError("");
+    setSuccessMsg("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/identity/resend-otp", {
+      console.log("🔄 Resending OTP to:", userEmail);
+      
+      const response = await fetch(`${API_BASE}/api/identity/resend-otp`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -185,19 +220,23 @@ export default function OtpVerification() {
       });
 
       const data = await response.json();
+      console.log("📥 Resend response:", data);
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to cycle parameter payloads.");
+        throw new Error(data.message || "Failed to resend OTP.");
       }
 
-      setError("Fresh code parameter payload broadcasted successfully to your inbox.");
+      setSuccessMsg("✓ New OTP sent successfully! Check your email.");
       setCountdown(30);
       setOtp(["", "", "", "", "", ""]);
       if (inputRefs.current[0]) inputRefs.current[0].focus();
 
+      // Clear success message after 5 seconds
+      setTimeout(() => setSuccessMsg(""), 5000);
+
     } catch (err) {
-      console.error("Token Broadcast Interruption Fault:", err);
-      setError(err.message || "Failed to broadcast fresh parameter payloads.");
+      console.error("❌ Resend OTP Error:", err);
+      setError(err.message || "Failed to resend OTP. Please try again.");
     } finally {
       setIsResending(false);
     }
@@ -229,17 +268,17 @@ export default function OtpVerification() {
           <div className="otp-badge">Secure Authorization</div>
           <h2>Verify Identity</h2>
           <p className="subtext">
-            Enter the secondary authorization payload sent directly to your active route terminal:
-            <span className="email-highlight" style={{ display: 'block', marginTop: '6px' }}>
+            Enter the 6-digit verification code sent to:
+            <span className="email-highlight" style={{ display: 'block', marginTop: '6px', fontWeight: 'bold' }}>
               {formatMaskedEmail(userEmail)}
             </span>
           </p>
         </div>
 
-        {/* Operational Grid Frame */}
+        {/* OTP Input Grid */}
         <form onSubmit={handleSubmit} noValidate>
           <div 
-            className={`otp-wrapper ${error && !error.includes("successfully") ? "has-input-errors" : ""} ${isVerifying ? "processing-lock" : ""}`}
+            className={`otp-wrapper ${error ? "has-input-errors" : ""} ${isVerifying ? "processing-lock" : ""}`}
             onPaste={handlePaste}
           >
             {otp.map((digit, index) => (
@@ -261,9 +300,14 @@ export default function OtpVerification() {
           </div>
 
           {error && (
-            <p className={error.includes("successfully") ? "success-msg-text" : "error-text"} 
-               style={{ color: error.includes("successfully") ? "#00e676" : "#ff3d00", fontSize: "13px", marginTop: "10px", textAlign: "center" }}>
-              {error.includes("successfully") ? "✓" : "⚠️"} {error}
+            <p className="error-text" style={{ color: "#ff3d00", fontSize: "13px", marginTop: "10px", textAlign: "center" }}>
+              ⚠️ {error}
+            </p>
+          )}
+
+          {successMsg && (
+            <p className="success-msg-text" style={{ color: "#00e676", fontSize: "13px", marginTop: "10px", textAlign: "center" }}>
+              ✓ {successMsg}
             </p>
           )}
 
@@ -271,7 +315,7 @@ export default function OtpVerification() {
             <div className="icon-badge">
               <ShieldCheck size={16} />
             </div>
-            <p>Vault systems isolate this gateway context. Do not expose authorization keys.</p>
+            <p>Your verification code is secure and encrypted. Do not share it with anyone.</p>
           </div>
 
           <button 
@@ -280,29 +324,33 @@ export default function OtpVerification() {
             disabled={isVerifying || !userEmail}
             style={{ opacity: isVerifying || !userEmail ? 0.7 : 1 }}
           >
-            <span>{isVerifying ? "Processing Security Handshake..." : "Verify OTP"}</span>
+            <span>{isVerifying ? "Verifying..." : "Verify OTP"}</span>
             <ArrowRight size={20} className="arrow-icon" />
           </button>
         </form>
 
-        {/* Structured Footer Contexts */}
+        {/* Footer with Resend */}
         <div className="footer">
           <div className="divider"></div>
           
           <div className="resend-action-block">
-            <p>Did not capture the automated payload transmission?</p>
+            <p>Didn't receive the code?</p>
             <button 
               type="button"
               className={`resend-trigger ${countdown > 0 || isResending ? "lockout" : ""}`}
               onClick={handleResend}
               disabled={countdown > 0 || isResending || isVerifying || !userEmail}
+              style={{ 
+                cursor: countdown > 0 || isResending ? 'not-allowed' : 'pointer',
+                opacity: countdown > 0 || isResending ? 0.5 : 1
+              }}
             >
               {isResending ? (
-                <span className="spinning-sync"><RefreshCw size={14} /> Broadcasting...</span>
+                <span className="spinning-sync"><RefreshCw size={14} /> Sending...</span>
               ) : countdown > 0 ? (
-                `Resend Parameter Payload (${countdown}s)`
+                `Resend Code (${countdown}s)`
               ) : (
-                "Request Fresh Token"
+                "Resend Code"
               )}
             </button>
           </div>
@@ -310,7 +358,7 @@ export default function OtpVerification() {
           <div className="bottom-security">
             <div className="secure-badge">
               <Lock size={12} />
-              <span>AES-256 Encrypted Context</span>
+              <span>Secure Connection</span>
             </div>
             <div className="status-dot"></div>
             <span className="secure-badge">Verified System</span>
