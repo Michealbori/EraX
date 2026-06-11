@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../firebase";
+import { API_ENDPOINTS } from "../../config/api";
 
 import {
   User,
@@ -57,7 +58,7 @@ export default function Register() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/identity/validate-referral/${code}`);
+      const response = await fetch(API_ENDPOINTS.VALIDATE_REFERRAL(code));
       const data = await response.json();
       
       if (data.success && data.valid) {
@@ -142,6 +143,7 @@ export default function Register() {
     setIsSubmitting(true);
 
     try {
+      // ✅ Step 1: Create Firebase Auth User
       const userCredential = await createUserWithEmailAndPassword(
         auth, 
         formData.email, 
@@ -152,7 +154,8 @@ export default function Register() {
         displayName: formData.fullName.trim()
       });
 
-      const backendResponse = await fetch("http://localhost:5000/api/identity/register", {
+      // ✅ Step 2: Register in Backend Database
+      const backendResponse = await fetch(API_ENDPOINTS.REGISTER, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -173,11 +176,13 @@ export default function Register() {
 
       const cleanEmail = formData.email.toLowerCase().trim();
       
+      // ✅ Store user data
       localStorage.setItem("userEmail", cleanEmail);
       if (backendData.referralCode) {
         localStorage.setItem("userReferralCode", backendData.referralCode);
       }
       
+      // ✅ Navigate to OTP verification
       navigate("/otp", { state: { email: cleanEmail } });
       
     } catch (error) {

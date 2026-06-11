@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import { HashRouter as BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 
 // ===== PUBLIC MARKETING & GUEST AUTH COMPONENTS =====
 import Navbar from "./component/nav/nav";
@@ -45,7 +45,7 @@ const MarketingLayout = () => (
 
 function App() {
   return (
-    <BrowserRouter >
+    <BrowserRouter>
       <Routes>
 
         {/* MARKETING SHELL */}
@@ -86,8 +86,8 @@ function App() {
           </Route>
         </Route>
 
-        {/* SECURED ADMIN DASHBOARD element={<ProtectedRoute requiredStage="logged_in" />*/}
-        <Route >
+        {/* SECURED ADMIN DASHBOARD */}
+        <Route>
           <Route path="/admin" element={<AdminLayout />}>
             <Route
               index
