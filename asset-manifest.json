@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/EraX/static/css/main.5cf4cc2c.css",
-    "main.js": "/EraX/static/js/main.a6af412f.js",
+    "main.js": "/EraX/static/js/main.e6c304bb.js",
     "static/media/Data security.png": "/EraX/static/media/Data security.4a37b56cf6e0d4eca2d3.png",
     "static/media/spike.png": "/EraX/static/media/spike.66e86cd8997e2591f89b.png",
     "index.html": "/EraX/index.html",
     "main.5cf4cc2c.css.map": "/EraX/static/css/main.5cf4cc2c.css.map",
-    "main.a6af412f.js.map": "/EraX/static/js/main.a6af412f.js.map"
+    "main.e6c304bb.js.map": "/EraX/static/js/main.e6c304bb.js.map"
   },
   "entrypoints": [
     "static/css/main.5cf4cc2c.css",
-    "static/js/main.a6af412f.js"
+    "static/js/main.e6c304bb.js"
   ]
 }
