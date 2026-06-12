@@ -38,7 +38,7 @@ const Transactions = () => {
 
         try {
           // Verify user context data via dashboard metric hooks
-          const response = await axios.get(`http://localhost:5000/api/identity/dashboard-metrics?email=${user.email}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/identity/dashboard-metrics?email=${user.email}`);
           if (response.data) {
             const { balances } = response.data;
             const totalNav = balances?.totalPortfolio ?? 0.00;

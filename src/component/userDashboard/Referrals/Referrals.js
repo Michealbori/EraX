@@ -24,7 +24,7 @@ const Referrals = () => {
         setReferralLink(`https://erax.investment/register?ref=${code}`);
 
         try {
-          const res = await axios.get(`http://localhost:5000/api/identity/dashboard-metrics?email=${user.email}`);
+          const res = await axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/identity/dashboard-metrics?email=${user.email}`);
           // TODO: Replace with real referral API when backend is ready
           setStats({ count: 0, earnings: 0 });
           setReferrals([]);

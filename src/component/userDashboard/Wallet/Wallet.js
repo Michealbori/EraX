@@ -41,7 +41,7 @@ const Wallet = () => {
 
         // FETCH REAL WALLET VALUES: Connect directly to your backend Express node
         try {
-          const response = await axios.get(`http://localhost:5000/api/identity/dashboard-metrics?email=${user.email}`);
+          const response = await axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:5000"}/api/identity/dashboard-metrics?email=${user.email}`);
           if (response.data) {
             setFinancials(response.data.balances);
             

@@ -7,7 +7,7 @@ import { auth, executePlatformAuth } from '../../firebase';
 import { MoveRight, MoveDown } from 'lucide-react';
 import './getStarted.css';
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+import { API_ENDPOINTS } from "../../config/api";
 
 export default function EraxGetStarted() {
   const navigate = useNavigate();

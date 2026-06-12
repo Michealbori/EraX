@@ -3,7 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ShieldCheck, Lock, ArrowRight, RefreshCw, Layers } from "lucide-react";
 import "./otp.css";
 
-const API_BASE = "http://localhost:5000";
+// ✅ Import the API endpoints configuration
+import { API_ENDPOINTS } from "../../config/api";
 
 export default function OtpVerification() {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -17,7 +18,7 @@ export default function OtpVerification() {
   const navigate = useNavigate(); 
   const location = useLocation();
 
-  // ✅ EMAIL CAPTURE
+  // ✅ Capture email from localStorage or URL state
   useEffect(() => {
     let registeredEmail = localStorage.getItem("userEmail");
     
@@ -26,7 +27,6 @@ export default function OtpVerification() {
       localStorage.setItem("userEmail", registeredEmail);
     }
 
-    // Also check the user object
     if (!registeredEmail) {
       const userData = localStorage.getItem("user");
       if (userData) {
@@ -48,7 +48,7 @@ export default function OtpVerification() {
     }
   }, [location]);
 
-  // Format masked email
+  // Format masked email for display
   const formatMaskedEmail = (email) => {
     if (!email) return "Loading...";
     const [name, domain] = email.split("@");
@@ -59,7 +59,7 @@ export default function OtpVerification() {
     return `${name.slice(0, 3)}*******@${domain}`;
   };
 
-  // Countdown timer
+  // Countdown timer for resend
   useEffect(() => {
     if (countdown <= 0) return;
     const interval = setInterval(() => {
@@ -126,6 +126,7 @@ export default function OtpVerification() {
     }
   };
 
+  // ✅ VERIFY OTP - Uses API_ENDPOINTS for production
   const handleOtpVerification = async (codeString) => {
     if (isVerifying) return;
     
@@ -140,8 +141,10 @@ export default function OtpVerification() {
 
     try {
       console.log("🔐 Verifying OTP for:", userEmail);
+      console.log("📡 Endpoint:", API_ENDPOINTS.VERIFY_OTP);
       
-      const response = await fetch(`${API_BASE}/api/identity/verify-otp`, {
+      // ✅ PRODUCTION READY: Uses API_ENDPOINTS.VERIFY_OTP
+      const response = await fetch(API_ENDPOINTS.VERIFY_OTP, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -153,13 +156,13 @@ export default function OtpVerification() {
       });
 
       const data = await response.json();
-      console.log("📥 Verification response:", data);
+      console.log("📥 Response:", data);
 
       if (!response.ok) {
         throw new Error(data.message || "Verification failed.");
       }
 
-      setSuccessMsg("Verification successful! Redirecting...");
+      setSuccessMsg("✓ Verification successful! Redirecting...");
       
       if (data.token) {
         localStorage.setItem("token", data.token);
@@ -190,7 +193,7 @@ export default function OtpVerification() {
     handleOtpVerification(code);
   };
 
-  // ✅ FIXED: Resend OTP Handler
+  // ✅ RESEND OTP - Uses API_ENDPOINTS for production
   const handleResend = async () => {
     if (countdown > 0 || isResending) {
       console.log("⏳ Resend locked, countdown:", countdown);
@@ -208,8 +211,10 @@ export default function OtpVerification() {
 
     try {
       console.log("🔄 Resending OTP to:", userEmail);
+      console.log("📡 Endpoint:", API_ENDPOINTS.RESEND_OTP);
       
-      const response = await fetch(`${API_BASE}/api/identity/resend-otp`, {
+      // ✅ PRODUCTION READY: Uses API_ENDPOINTS.RESEND_OTP
+      const response = await fetch(API_ENDPOINTS.RESEND_OTP, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -220,7 +225,7 @@ export default function OtpVerification() {
       });
 
       const data = await response.json();
-      console.log("📥 Resend response:", data);
+      console.log("📥 Response:", data);
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to resend OTP.");
@@ -231,7 +236,6 @@ export default function OtpVerification() {
       setOtp(["", "", "", "", "", ""]);
       if (inputRefs.current[0]) inputRefs.current[0].focus();
 
-      // Clear success message after 5 seconds
       setTimeout(() => setSuccessMsg(""), 5000);
 
     } catch (err) {
@@ -250,7 +254,6 @@ export default function OtpVerification() {
       <div className="otp-card">
         <div className="top-glow-accent"></div>
 
-        {/* Brand System */}
         <div className="logo">
           <div className="logo-icon">
             <div className="bar bar1"></div>
@@ -263,7 +266,6 @@ export default function OtpVerification() {
           </h1>
         </div>
 
-        {/* Content Typography */}
         <div className="content">
           <div className="otp-badge">Secure Authorization</div>
           <h2>Verify Identity</h2>
@@ -275,7 +277,6 @@ export default function OtpVerification() {
           </p>
         </div>
 
-        {/* OTP Input Grid */}
         <form onSubmit={handleSubmit} noValidate>
           <div 
             className={`otp-wrapper ${error ? "has-input-errors" : ""} ${isVerifying ? "processing-lock" : ""}`}
@@ -329,7 +330,6 @@ export default function OtpVerification() {
           </button>
         </form>
 
-        {/* Footer with Resend */}
         <div className="footer">
           <div className="divider"></div>
           

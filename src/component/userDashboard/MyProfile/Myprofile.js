@@ -3,7 +3,7 @@ import axios from 'axios';
 import { User, Mail, Lock, ShieldCheck, LogOut, Trash2, Upload, RefreshCw, AlertCircle, CheckCircle2, X, Eye, EyeOff } from 'lucide-react';
 import "./MyProfile.css";
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+import { API_ENDPOINTS } from "../../config/api";
 
 const MyProfile = () => {
   const [currentUser, setCurrentUser] = useState(null);

@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 const db = getFirestore();
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+import { API_ENDPOINTS } from "../../config/api";
 
 const Investments = () => {
   const [currentUser, setCurrentUser] = useState(null);

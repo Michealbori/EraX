@@ -4,7 +4,7 @@ import axios from 'axios';
 import { auth } from "../../../firebase";
 import './overView.css';
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+import { API_ENDPOINTS } from "../../config/api";
 
 const MetricCard = ({ title, value, change, isPositive, subtitle }) => (
   <div className="metric-card">
